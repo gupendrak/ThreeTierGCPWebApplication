@@ -1,0 +1,10 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ssd-postgres-rwo
+provisioner: kubernetes.io/gce-pd
+parameters:
+  type: pd-ssd
+  # encryptionKey: projects/YOUR_PROJECT/locations/global/keyRings/YOUR_KEY_RING/cryptoKeys/YOUR_KEY_NAME
+
+reclaimPolicy: Retain # or Delete

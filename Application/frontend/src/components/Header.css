@@ -1,0 +1,58 @@
+.header-container {
+    background-color: #282c34;
+    /* Dark background */
+    color: white;
+    /* White text */
+    padding: 20px;
+    /* Padding around the header */
+    text-align: center;
+    /* Centered text */
+    border-radius: 10px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Shadow effect */
+}
+
+.header-title {
+    font-size: 2.5em;
+    /* Larger title font */
+    margin-bottom: 10px;
+    /* Space below title */
+}
+
+.header-subtitle {
+    font-size: 1.5em;
+    /* Subtitle font size */
+    margin-bottom: 5px;
+    /* Space below subtitle */
+    font-style: italic;
+    /* Italicize subtitle */
+}
+
+.header-version {
+    font-size: 1.2em;
+    /* Version font size */
+    margin-bottom: 10px;
+    /* Space below version */
+}
+
+.header-note {
+    font-size: 1.2em;
+    /* Note font size */
+    margin-bottom: 15px;
+    /* Space below note */
+}
+
+.header-link {
+    color: #61dafb;
+    /* Link color */
+    text-decoration: none;
+    /* Remove underline from link */
+    font-size: 1.1em;
+    /* Link font size */
+}
+
+.header-link:hover {
+    text-decoration: underline;
+    /* Underline on hover */
+}

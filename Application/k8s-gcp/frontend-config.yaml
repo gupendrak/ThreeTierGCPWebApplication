@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-config
+  labels:
+    app: frontend
+data:
+  # REACT_APP_BACKEND_BASE_URI: www.guk.gcpwapp/api/items localhost:8080/api/items
+  # REACT_APP_BACKEND_BASE_URI: http://lb-backend/api/items
+  REACT_APP_BACKEND_BASE_URI: http://34.27.83.255/api/items/

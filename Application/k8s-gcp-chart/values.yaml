@@ -1,0 +1,88 @@
+kubernetesClusterDomain: cluster.local
+postgres:
+  image:
+    name: postgres
+    tag: "15"
+  ports:
+  - port: 5432
+  type: NodePort #ClusterIP
+
+backend:
+  image:
+    name: gupendrak/gcpwebapp-backend
+    tag: 1.6
+  ports:
+  - port: 3000
+    name: http
+    targetPort: 80
+  - port: 4000
+    name: https
+    targetPort: 443
+  type: LoadBalancer
+
+frontend:
+  image:
+    name: gupendrak/gcpwebapp-frontend
+    tag: 1.6
+  ports:
+  - port: 3001
+    name: http    
+    targetPort: 80
+  - port: 4001
+    name: https
+    targetPort: 443
+  type: LoadBalancer
+
+postgresConfig:
+  postgresDb: app
+  postgresUser: postgres
+
+postgresSecret:
+  postgresPassword: "pass"
+
+pvc:
+  postgresVolumeClaim:
+    storageClass: manual #ssd-postgres-rwo
+    storageRequest: 2Gi
+
+backendConfig:
+  postgresDb: app
+  postgresPassword: pass
+  postgresServer: gcpwebapp-postgres
+  postgresUser: postgres
+  projectName: gcpwebapp
+  serverName: server
+
+frontendConfig:
+  reactAppBackendBaseUri: http://34.27.83.255/api/items/
+
+frontendNetworkPolicyIngress:
+  policyTypes:
+    - Ingress
+  ingress:
+    - ports:
+        - protocol: TCP
+          port: 80
+        - protocol: TCP
+          port: 443
+
+postgresNetworkPolicy:
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+      - podSelector:
+          matchLabels:
+            role: backend
+      ports:
+        - protocol: TCP
+          port: 5432
+  egress:
+    - to:
+      - podSelector:
+          matchLabels:
+            role: backend
+      ports:
+        - protocol: TCP
+          port: 5432

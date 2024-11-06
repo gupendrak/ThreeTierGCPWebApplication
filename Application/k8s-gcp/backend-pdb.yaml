@@ -1,0 +1,9 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: backend-pdb
+spec:
+  selector:
+    matchLabels:
+      app: backend
+  minAvailable: 1  # Ensures at least one pod is always running

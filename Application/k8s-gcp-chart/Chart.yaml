@@ -1,0 +1,11 @@
+apiVersion: v2
+name: k8app
+description: A Helm chart for a backend / frontend application in kubernetes - GKE
+type: application
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+version: 0.1.0
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application.
+# It is recommended to use it with quotes.
+appVersion: "0.1.0"
