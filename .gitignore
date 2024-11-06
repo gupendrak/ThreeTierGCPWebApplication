@@ -1,0 +1,7 @@
+GKE/.terraform/
+# GKE/.tfstate*
+GKE/.terraform.*
+GKE/credentials/*
+GKE/terraform*
+GKE/terraform.tfstate*
+.DS_*
